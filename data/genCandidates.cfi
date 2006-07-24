@@ -1,5 +1,5 @@
 module genCandidates = HepMCCandidateProducer {
-  string src = "MCFileSource"
+  string src = "source"
   bool stableOnly = true
   vstring excludeList = { "nu(e)0", "nu(mu)0", "nu(tau)0", "gamma0", "pi0", "K(L)0", "n0" }
   untracked bool verbose = false
