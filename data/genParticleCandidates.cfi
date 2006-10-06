@@ -1,0 +1,13 @@
+module genParticleCandidates = GenParticleCandidateProducer {
+  string src = "VtxSmeared"
+  bool stableOnly = false
+  double ptMinNeutral = 0.2
+  double ptMinCharged = 0.5
+  vstring excludeList = { 
+    "g", "string", 
+    "u", "d", "s", "c",
+    "omega", "rho0", "rho+", "K*+", "K*0", "K0",
+    "Delta0", "Delta+", "Delta++", "Lambda0", "Sigma+", "Sigma*+", "Xi0"
+  }
+  untracked bool verbose = false
+}
