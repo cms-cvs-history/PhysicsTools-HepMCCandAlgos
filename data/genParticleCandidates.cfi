@@ -3,11 +3,20 @@ module genParticleCandidates = GenParticleCandidateProducer {
   bool stableOnly = false
   double ptMinNeutral = 0.2
   double ptMinCharged = 0.5
+  bool keepInitialParticles = true
   vstring excludeList = { 
-    "g", "string", 
-    "u", "d", "s", "c",
-    "omega", "rho0", "rho+", "K*+", "K*0", "K0",
-    "Delta0", "Delta+", "Delta++", "Lambda0", "Sigma+", "Sigma*+", "Xi0"
+    "g", 
+    "string", 
+    "ud_0", "uu_1", # more qq_x to be added ...
+    "u", "d", "s", "c", # keep b and t quarks
+    "omega", 
+# keep rho's ?
+#    "rho0", "rho+", 
+    "K*+", "K*0", "K0",
+    "Delta0", "Delta+", "Delta++", 
+    "Lambda0", 
+    "Sigma+", "Sigma*+", 
+    "Xi0"
   }
   untracked bool verbose = false
 }
