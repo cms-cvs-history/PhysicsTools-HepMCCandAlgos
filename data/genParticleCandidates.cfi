@@ -1,19 +1,25 @@
 module genParticleCandidates = GenParticleCandidateProducer {
   string src = "VtxSmeared"
   bool stableOnly = false
-  double eMinNeutral = 0.1
-  double ptMinCharged = 0.5
+  double ptMinNeutral = -1 # 0.1
+  double ptMinCharged = -1 # 0.05
+  double ptMinGluon = 0.5
   bool keepInitialProtons = true
   bool excludeUnfragmentedClones = false
   vstring excludeList = { 
-    "g", 
-    "string", 
-    "ud_0", "uu_1",     # more qq_x to be added ...
+#    "g", 
+    "string", "cluster",
+    "dd_1", "ud_0", "ud_1", "uu_1",
+    "sd_0", "sd_1", "su_0", "su_1", "ss_1",
+    "cd_0", "cd_1", "cu_0", "cu_1", "cs_0", "cs_1", "cc_1",
+    "bd_0", "bd_1", "bu_0", "bu_1", "bs_0", "bs_1", "bc_0", "bc_1", "bb_1",
+
 #    "u", "d", "s", "c", # keep b and t quarks only
     "omega", 
 # keep rho's ?
-#    "rho0", "rho+", 
-    "K*+", "K*0", "K0",
+    "rho0", "rho+", 
+    "K*+", "K*0", 
+    "K0",
     "Delta0", "Delta+", "Delta++", 
     "Lambda0", 
     "Sigma+", "Sigma*+", 
