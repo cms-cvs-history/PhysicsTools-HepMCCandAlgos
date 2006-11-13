@@ -1,7 +1,7 @@
 module genParticleCandidates = GenParticleCandidateProducer {
   string src = "VtxSmeared"
   bool stableOnly = false
-  double ptMinNeutral = 0.1
+  double eMinNeutral = 0.1
   double ptMinCharged = 0.5
   bool keepInitialProtons = true
   bool excludeUnfragmentedClones = false
