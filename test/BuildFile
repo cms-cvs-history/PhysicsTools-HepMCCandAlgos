@@ -1,0 +1,5 @@
+<library file="MCTruthMatchFlagProducer.cc" name=PhysicsToolsHepMCCandAlgos_test>
+  <use name=PhysicsTools/HepMCCandAlgos>
+  <use name=FWCore/Framework>
+  <flags SEAL_PLUGIN_NAME="PhysicsToolsHepMCCandAlgos_test">
+</library>
