@@ -56,7 +56,7 @@ void MCTruthMatchFlagProducer::produce( Event & evt, const EventSetup & ) {
     if( f != matchMap->end() ) {
       int id = abs( pdgId( * ( f->val ) ) );
       cout << c << ") found match with id: " << id
-	   << "pt, eta, phi = " << cref->pt() << ", " << cref->eta() << ", " << cref->phi() 
+	   << "; pt, eta, phi = " << cref->pt() << ", " << cref->eta() << ", " << cref->phi() 
 	   << " mass = " << cref->mass();
       if ( find( pdgId_.begin(), pdgId_.end(), id ) != pdgId_.end() ) {
 	(*flags)[ c ] = 1;
