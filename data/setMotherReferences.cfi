@@ -1,3 +1,0 @@
-module setMotherReferences = SetGenParticleMotherReference {
-  InputTag src = genParticleCandidates
-}
