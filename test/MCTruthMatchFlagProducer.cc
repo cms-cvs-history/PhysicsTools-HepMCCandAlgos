@@ -30,8 +30,9 @@ MCTruthMatchFlagProducer::MCTruthMatchFlagProducer( const ParameterSet & cfg ) :
   src_( cfg.getParameter<InputTag>( "src" ) ),
   matchMap_( cfg.getParameter<InputTag>( "matchMap" ) ),
   pdgId_( cfg.getParameter<vector<int> >( "pdgId" ) ) {
-  produces<vector<int> >();
-  produces<CandidateCollection>();
+  std::string alias( cfg.getParameter<std::string>( "@module_label" ) );
+  produces<vector<int> >().setBranchAlias( alias );
+  produces<CandidateCollection>().setBranchAlias( alias + "Cands" );
   for( vector<int>::iterator i = pdgId_.begin(); i != pdgId_.end(); ++i ) {
     * i = abs( * i );
   }
