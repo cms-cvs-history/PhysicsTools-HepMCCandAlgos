@@ -47,7 +47,7 @@ void MCTruthMatchFlagProducer::produce( Event & evt, const EventSetup & ) {
   Handle<CandMatchMap> matchMap;
   evt.getByLabel( matchMap_, matchMap );
   
-  auto_ptr<vector<int> > flags( new vector<int>( cands->size(), 0 ) );
+  auto_ptr<vector<int> > flags( new vector<int>( cands->size(), -1 ) );
   auto_ptr<CandidateCollection> selected( new CandidateCollection );
 
   
@@ -60,7 +60,7 @@ void MCTruthMatchFlagProducer::produce( Event & evt, const EventSetup & ) {
 	   << "; pt, eta, phi = " << cref->pt() << ", " << cref->eta() << ", " << cref->phi() 
 	   << " mass = " << cref->mass();
       if ( find( pdgId_.begin(), pdgId_.end(), id ) != pdgId_.end() ) {
-	(*flags)[ c ] = 1;
+	(*flags)[ c ] = f->val.key();
 	selected->push_back( new ShallowCloneCandidate( CandidateBaseRef( cref ) ) );
 	cout << " [*]";
       }
