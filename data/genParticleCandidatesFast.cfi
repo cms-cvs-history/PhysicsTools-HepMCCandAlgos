@@ -1,0 +1,3 @@
+module genParticleCandidates = FastGenParticleCandidateProducer {
+  string src = "VtxSmeared"
+}
