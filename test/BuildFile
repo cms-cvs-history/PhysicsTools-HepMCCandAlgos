@@ -3,3 +3,9 @@
   <use name=FWCore/Framework>
   <flags SEAL_PLUGIN_NAME="PhysicsToolsHepMCCandAlgos_test">
 </library>
+
+<library file="DummyHepMCAnalyzer.cc" name=PhysicsToolsHepMCCandAlgos_test2>
+  <use name=PhysicsTools/HepMCCandAlgos>
+  <use name=FWCore/Framework>
+  <flags SEAL_PLUGIN_NAME="PhysicsToolsHepMCCandAlgos_test2">
+</library>
