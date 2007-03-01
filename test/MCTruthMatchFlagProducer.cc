@@ -55,7 +55,7 @@ void MCTruthMatchFlagProducer::produce( Event & evt, const EventSetup & ) {
     CandidateRef cref( cands, c );
     CandMatchMap::const_iterator f = matchMap->find( cref );
     if( f != matchMap->end() ) {
-      int id = abs( pdgId( * ( f->val ) ) );
+      int id = abs( f->val->pdgId() );
       cout << c << ") found match with id: " << id
 	   << "; pt, eta, phi = " << cref->pt() << ", " << cref->eta() << ", " << cref->phi() 
 	   << " mass = " << cref->mass();
