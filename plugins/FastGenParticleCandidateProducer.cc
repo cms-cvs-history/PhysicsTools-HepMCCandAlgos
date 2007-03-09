@@ -2,7 +2,7 @@
  *
  * \author Luca Lista, INFN
  *
- * \version $Id: FastGenParticleCandidateProducer.cc,v 1.4 2007/03/05 13:27:02 llista Exp $
+ * \version $Id: FastGenParticleCandidateProducer.cc,v 1.5 2007/03/07 11:29:46 llista Exp $
  *
  */
 #include "FWCore/Framework/interface/EDProducer.h"
@@ -164,8 +164,8 @@ void FastGenParticleCandidateProducer::fillOutput( const std::vector<const GenPa
     }
     int pdgId = part->pdg_id();
     GenParticleCandidate * c = 
-      new GenParticleCandidate( chargeTimesThree( pdgId ), momentum, vertex, 
-				pdgId, part->status(), false );
+      new GenParticleCandidate( chargeTimesThree( pdgId ) / 3, momentum, vertex, 
+				pdgId, part->status() );
     auto_ptr<Candidate> ptr( c );
     candVector[ i ] = c;
     cands.push_back( ptr );

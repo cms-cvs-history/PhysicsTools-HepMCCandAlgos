@@ -2,7 +2,7 @@
  *
  * \author Luca Lista, INFN
  *
- * \version $Id: GenParticleCandidateProducer.cc,v 1.4 2007/03/05 13:27:02 llista Exp $
+ * \version $Id: GenParticleCandidateProducer.cc,v 1.5 2007/03/07 11:29:46 llista Exp $
  *
  */
 #include "FWCore/Framework/interface/EDProducer.h"
@@ -374,8 +374,8 @@ void GenParticleCandidateProducer::fillOutput( const vector<const GenParticle *>
 	vertex.SetXYZ( vtx.x() / 10. , vtx.y() / 10. , vtx.z() / 10. );
       }
       int pdgId = part->pdg_id();
-      cand = new GenParticleCandidate( chargeTimesThree( pdgId ), momentum, vertex, 
-				       pdgId, part->status(), false );
+      cand = new GenParticleCandidate( chargeTimesThree( pdgId ) / 3, momentum, vertex, 
+				       pdgId, part->status() );
       auto_ptr<Candidate> ptr( cand );
       index = indices.size();
       cands.push_back( ptr );
