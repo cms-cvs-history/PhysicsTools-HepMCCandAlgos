@@ -1,8 +1,5 @@
 service = RandomNumberGeneratorService {
   untracked uint32 sourceSeed = 123456789
-  PSet moduleSeeds = {
-    untracked uint32 VtxSmeared = 98765432
-  }
 }  
 
 source = PythiaSource {
@@ -66,13 +63,3 @@ source = PythiaSource {
     }
   }
 }	
-	
-module VtxSmeared = VertexGenerator {
-  string type = "IOMC/EventVertexGenerators/GaussianEventVertexGenerator"
-  double MeanX = 0.
-  double MeanY = 0.
-  double MeanZ = 0.
-  double SigmaX = 0.015
-  double SigmaY = 0.015
-  double SigmaZ = 53.0  // in mm (as in COBRA/OSCAR)
-}

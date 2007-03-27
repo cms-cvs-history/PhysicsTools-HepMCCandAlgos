@@ -1,5 +1,5 @@
 module genParticleCandidates = GenParticleCandidateProducer {
-  string src = "VtxSmeared"
+  string src = "source"
   bool stableOnly = false
   double ptMinNeutral = -1 # 0.1
   double ptMinCharged = -1 # 0.5
