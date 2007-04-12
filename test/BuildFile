@@ -1,12 +1,12 @@
 <library file="MCTruthMatchFlagProducer.cc" name=PhysicsToolsHepMCCandAlgos_test>
   <use name=PhysicsTools/HepMCCandAlgos>
   <use name=FWCore/Framework>
-  <flags SEAL_PLUGIN_NAME="PhysicsToolsHepMCCandAlgos_test">
+  <flags EDM_PLUGIN=1>
 </library>
 
 <library file="DummyHepMCAnalyzer.cc" name=PhysicsToolsHepMCCandAlgos_test2>
   <use name=PhysicsTools/HepMCCandAlgos>
   <use name=SimDataFormats/HepMCProduct>
   <use name=FWCore/Framework>
-  <flags SEAL_PLUGIN_NAME="PhysicsToolsHepMCCandAlgos_test2">
+  <flags EDM_PLUGIN=1>
 </library>
