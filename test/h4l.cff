@@ -3,7 +3,6 @@ service = RandomNumberGeneratorService {
 }  
 
 source = PythiaSource {
-  untracked int32 maxEvents = 50
   untracked bool pythiaVerbosity = false
 
   PSet PythiaParameters = {

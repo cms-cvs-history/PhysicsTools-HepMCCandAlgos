@@ -3,7 +3,6 @@ service = RandomNumberGeneratorService {
 }  
 
 source = PythiaSource { 
-  untracked int32 maxEvents = 50
   untracked int32 pythiaPylistVerbosity = 0
   untracked bool pythiaHepMCVerbosity = false
   untracked int32 maxEventsToPrint = 0
