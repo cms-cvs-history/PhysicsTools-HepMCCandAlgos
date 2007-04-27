@@ -1,9 +1,9 @@
-import FWCore.ParameterSet.Config as cms
+from FWCore.ParameterSet.Config import *
 
-pythiaSource = cms.Source("PythiaSource",
-  pythiaVerbosity = cms.untracked.bool(False),
-  PythiaParameters = cms.PSet(parameterSets = cms.vstring("pythiaHZZeeee"),
-    pythiaHZZeeee = cms.vstring(
+pythiaSource = Source("PythiaSource",
+  pythiaVerbosity = untracked.bool(False),
+  PythiaParameters = PSet(parameterSets = vstring("pythiaHZZeeee"),
+    pythiaHZZeeee = vstring(
       "PMAS(25,1)=190.0        !mass of Higgs",
       "MSEL=0                  !(D=1) to select between full user control (0, then use MSUB) and some preprogrammed alternative: QCD hight pT processes (1, then ISUB=11, 12, 13, 28, 53, 68), QCD low pT processes (2, then ISUB=11, 12, 13, 28, 53, 68, 91, 92, 94, 95)",
       "MSTJ(11)=3              !Choice of the fragmentation function",
