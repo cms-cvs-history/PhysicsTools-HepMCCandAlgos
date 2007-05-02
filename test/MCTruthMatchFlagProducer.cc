@@ -72,11 +72,9 @@ void MCTruthMatchFlagProducer::produce( Event & evt, const EventSetup & ) {
   evt.put( selected );
 }
 
-#include "PluginManager/ModuleDef.h"
 #include "FWCore/Framework/interface/MakerMacros.h"
 
-DEFINE_SEAL_MODULE();
-DEFINE_ANOTHER_FWK_MODULE( MCTruthMatchFlagProducer );
+DEFINE_FWK_MODULE( MCTruthMatchFlagProducer );
 
 
 
