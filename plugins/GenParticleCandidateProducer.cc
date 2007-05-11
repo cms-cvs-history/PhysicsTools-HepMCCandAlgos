@@ -2,12 +2,12 @@
  *
  * \author Luca Lista, INFN
  *
- * \version $Id: GenParticleCandidateProducer.cc,v 1.12 2007/05/04 13:47:37 llista Exp $
+ * \version $Id: GenParticleCandidateProducer.cc,v 1.13 2007/05/09 08:11:39 llista Exp $
  *
  */
 #include "FWCore/Framework/interface/EDProducer.h"
 #include "DataFormats/Candidate/interface/CandidateFwd.h"
-#include "DataFormats/HepMCCandidate/interface/GenParticleCandidateFwd.h"
+#include "DataFormats/HepMCCandidate/interface/GenParticleCandidate.h"
 #include "SimGeneral/HepPDTRecord/interface/PdtEntry.h"
 #include <vector>
 #include <map>
@@ -376,12 +376,12 @@ void GenParticleCandidateProducer::fillOutput( const vector<const GenParticle *>
       Candidate::Point vertex( 0, 0, 0 );
       const HepMC::GenVertex * v = part->production_vertex();
       if ( v != 0 ) {
- 	ThreeVector vtx = v->point3d();
+ 	HepGeom::Point3D<double> vtx = v->point3d();
 	vertex.SetXYZ( vtx.x() * mmToCm, vtx.y() * mmToCm, vtx.z() * mmToCm );
       }
       int pdgId = part->pdg_id();
       cand = new GenParticleCandidate( chargeTimesThree( pdgId ), momentum, vertex, 
-				       pdgId, part->status(), false );
+				       pdgId, part->status() );
       auto_ptr<Candidate> ptr( cand );
       index = indices.size();
       cands.push_back( ptr );

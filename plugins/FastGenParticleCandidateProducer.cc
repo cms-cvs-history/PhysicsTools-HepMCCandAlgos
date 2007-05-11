@@ -2,7 +2,7 @@
  *
  * \author Luca Lista, INFN
  *
- * \version $Id: FastGenParticleCandidateProducer.cc,v 1.12 2007/05/04 13:44:19 llista Exp $
+ * \version $Id: FastGenParticleCandidateProducer.cc,v 1.13 2007/05/04 13:45:45 llista Exp $
  *
  */
 #include "FWCore/Framework/interface/EDProducer.h"
@@ -92,9 +92,9 @@ int FastGenParticleCandidateProducer::chargeTimesThree( int id ) const {
 }
 
 void FastGenParticleCandidateProducer::beginJob( const EventSetup & es ) {
-  ESHandle<HepPDT::ParticleDataTable> pdt;
+  ESHandle<DefaultConfig::ParticleDataTable> pdt;
   es.getData( pdt );
-  for( HepPDT::ParticleDataTable::const_iterator p = pdt->begin(); p != pdt->end(); ++ p ) {
+  for( DefaultConfig::ParticleDataTable::const_iterator p = pdt->begin(); p != pdt->end(); ++ p ) {
     const HepPDT::ParticleID & id = p->first;
     int pdgId = id.pid(), apdgId = abs( pdgId );
     int q3 = id.threeCharge();
@@ -157,13 +157,12 @@ void FastGenParticleCandidateProducer::fillOutput( const std::vector<const GenPa
     Candidate::Point vertex( 0, 0, 0 );
     const GenVertex * v = part->production_vertex();
     if ( v != 0 ) {
-      ThreeVector vtx = v->point3d();
+      HepGeom::Point3D<double> vtx = v->point3d();
       vertex.SetXYZ( vtx.x() * mmToCm, vtx.y() * mmToCm, vtx.z() * mmToCm );
     }
     int pdgId = part->pdg_id();
     GenParticleCandidate * c = 
-      new GenParticleCandidate( chargeTimesThree( pdgId ), momentum, vertex, 
-				pdgId, part->status(), false );
+      new GenParticleCandidate( chargeTimesThree( pdgId ), momentum, vertex, pdgId, part->status() );
     auto_ptr<Candidate> ptr( c );
     candVector[ i ] = c;
     cands.push_back( ptr );

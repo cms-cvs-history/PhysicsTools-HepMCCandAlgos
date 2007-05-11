@@ -49,12 +49,12 @@ std::vector<const reco::Candidate *> MCCandMatcher<C>::getDaughters( const reco:
   vector<const Candidate *> v;
   v.push_back( c );
   int pdgId = c->pdgId();
-  if ( c->status() == 3 ) {
+  if ( reco::status( *c ) == 3 ) {
     size_t stableIdenticalDaughters = 0;
     const Candidate * identicalDaughter = 0;
     for( size_t i = 0, n = c->numberOfDaughters(); i < n; ++ i ) {
       const Candidate * d = c->daughter( i );
-      if ( pdgId == d->pdgId() && d->status() == 1 ) {
+      if ( pdgId == d->pdgId() && reco::status( *d ) == 1 ) {
 	stableIdenticalDaughters ++;
 	identicalDaughter = d;
 	if ( stableIdenticalDaughters > 1 ) break;

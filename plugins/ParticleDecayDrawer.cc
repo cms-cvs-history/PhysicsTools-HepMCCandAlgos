@@ -55,7 +55,7 @@ bool ParticleDecayDrawer::accept( const reco::Candidate & c, const list<const Ca
 }
 
 bool ParticleDecayDrawer::select( const reco::Candidate & c ) const {
-  return c.status() == 3;
+  return reco::status(c) == 3;
 }
 
 bool ParticleDecayDrawer::hasValidDaughters( const reco::Candidate & c ) const {

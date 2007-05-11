@@ -7,7 +7,7 @@
  */
 
 #include <set>
-#include "DataFormats/Candidate/interface/Candidate.h"
+#include "DataFormats/HepMCCandidate/interface/GenParticleCandidate.h"
 
 namespace helpers {
   template<typename T>
@@ -21,7 +21,7 @@ namespace helpers {
 	matchIds_.insert( abs( * i ) );
     }
     bool operator()( const T & c, const reco::Candidate & mc ) const {
-      if ( mc.status() != 1 ) return false;
+      if ( reco::status( mc ) != 1 ) return false;
       if ( checkCharge_ && c.charge() != mc.charge() ) return false;
       if ( matchIds_.size() == 0 ) return true;
       return matchIds_.find( abs( mc.pdgId() ) ) != matchIds_.end();
