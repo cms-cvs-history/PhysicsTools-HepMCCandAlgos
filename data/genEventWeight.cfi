@@ -1,0 +1,3 @@
+module genEventWeight =	GenEventWeightProducer {
+  InputTag src = source	
+}
