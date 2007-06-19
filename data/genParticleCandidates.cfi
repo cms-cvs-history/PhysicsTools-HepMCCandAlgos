@@ -1,4 +1,0 @@
-module genParticleCandidates = FastGenParticleCandidateProducer {
-  InputTag src = source
-  untracked bool abortOnUnknownPDGCode = true
-}
