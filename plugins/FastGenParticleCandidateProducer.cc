@@ -5,7 +5,7 @@
  * Convert HepMC GenEvent format into a collection of type
  * CandidateCollection containing objects of type GenParticleCandidate
  *
- * \version $Id: FastGenParticleCandidateProducer.cc,v 1.21 2007/06/19 10:17:32 llista Exp $
+ * \version $Id: FastGenParticleCandidateProducer.cc,v 1.22 2007/06/19 17:52:55 llista Exp $
  *
  */
 #include "FWCore/Framework/interface/EDProducer.h"
@@ -32,7 +32,7 @@ class FastGenParticleCandidateProducer : public edm::EDProducer {
   /// process one event
   void produce( edm::Event& e, const edm::EventSetup& );
   /// source collection name  
-  edm::InputTag src_;
+  std::string src_;
   /// unknown code treatment flag
   bool abortOnUnknownPDGCode_;
   /// internal functional decomposition
@@ -80,7 +80,7 @@ static const int PDGCacheMax = 32768;
 static const double mmToCm = 0.1;
 
 FastGenParticleCandidateProducer::FastGenParticleCandidateProducer( const ParameterSet & p ) :
-  src_( p.getParameter<InputTag>( "src" ) ),
+  src_( p.getParameter<string>( "src" ) ),
   abortOnUnknownPDGCode_( p.getUntrackedParameter<bool>( "abortOnUnknownPDGCode", true ) ),
   chargeP_( PDGCacheMax, 0 ), chargeM_( PDGCacheMax, 0 ) {
   produces<CandidateCollection>();
