@@ -1,0 +1,6 @@
+module allTracksGenParticlesLeptonMatch = MCTruthDeltaRMatcher {
+  InputTag src = allTracks
+  InputTag matched = genParticleCandidates
+  double distMin = 0.15
+  vint32 matchPDGId = { 11, 13 }
+}

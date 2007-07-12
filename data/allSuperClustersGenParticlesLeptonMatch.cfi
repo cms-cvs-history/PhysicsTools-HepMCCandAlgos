@@ -1,0 +1,6 @@
+module allSuperClustersGenParticlesLeptonMatch = MCTruthDeltaRMatcher {
+  InputTag src = allSuperClusters
+  InputTag matched = genParticleCandidates
+  double distMin = 0.15
+  vint32 matchPDGId = { 11 }
+}
