@@ -1,1 +1,3 @@
-include "PhysicsTools/HepMCCandAlgos/data/genParticleCandidates.cfi"
+module genParticleCandidates = FastGenParticleCandidateProducer {
+  InputTag src = source
+}
