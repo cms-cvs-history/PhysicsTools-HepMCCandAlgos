@@ -1,0 +1,3 @@
+module genEventScale = GenEventScaleProducer {
+  InputTag src = source	
+}
