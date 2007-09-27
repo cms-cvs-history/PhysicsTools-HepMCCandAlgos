@@ -1,0 +1,3 @@
+module genEventRunInfo = GenEventRunInfoProducer {
+  InputTag src = source	
+}
