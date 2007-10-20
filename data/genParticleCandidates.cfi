@@ -1,4 +1,5 @@
 module genParticleCandidates = FastGenParticleCandidateProducer {
   InputTag src = source
   untracked bool abortOnUnknownPDGCode = false
+  untracked bool saveBarCodes = false
 }
