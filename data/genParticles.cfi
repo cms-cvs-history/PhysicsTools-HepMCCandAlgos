@@ -1,4 +1,5 @@
 module genParticles = GenParticleProducer {
   InputTag src = source
   untracked bool abortOnUnknownPDGCode = true
+  untracked bool saveBarCodes = false
 }
