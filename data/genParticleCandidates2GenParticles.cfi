@@ -1,0 +1,3 @@
+module genParticles = GenParticleCandidate2GenParticleProducer {
+  InputTag src = genParticleCandidates
+}
