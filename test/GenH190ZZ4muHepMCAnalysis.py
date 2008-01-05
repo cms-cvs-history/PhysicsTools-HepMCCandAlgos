@@ -1,6 +1,6 @@
 from FWCore.ParameterSet.Config import *
 
-process = Process("Gen")
+process = Process("TEST")
 
 process.maxEvents = untracked.PSet( input = untracked.int32(100) )
 
