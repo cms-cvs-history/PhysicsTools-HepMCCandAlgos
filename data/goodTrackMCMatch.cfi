@@ -1,0 +1,6 @@
+module goodTrackMCMatch = MCTruthDeltaRMatcherNew {
+  InputTag src = goodTracks 
+  InputTag matched = genParticles
+  double distMin = 0.15
+  vint32 matchPDGId = { 13 } # muons
+}
