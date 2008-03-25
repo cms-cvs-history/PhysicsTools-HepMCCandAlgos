@@ -1,6 +1,0 @@
-module goodMuonMCMatch = MCTruthDeltaRMatcherNew {
-  InputTag src = goodMuons 
-  InputTag matched = genParticles
-  double distMin = 0.15
-  vint32 matchPDGId = { 13 } # muons
-}
