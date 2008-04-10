@@ -1,0 +1,11 @@
+module goodTrackMCMatch = MCMatcher {
+  InputTag src = goodTracks 
+  InputTag matched = genParticles
+  double maxDeltaR = 0.15
+  double maxDPtRel = 1.0
+  bool resolveAmbiguities = false
+  bool resolveByMatchQuality = false
+  bool checkCharge = true
+  vint32 mcPdgId = { 13 } # muons
+  vint32 mcStatus = { 1 }
+} 
