@@ -1,6 +1,12 @@
-module goodStandAloneMuonTrackMCMatch = MCTruthDeltaRMatcherNew {
+module goodStandAloneMuonTrackMCMatch = MCMatcher {
   InputTag src = goodStandAloneMuonTracks 
   InputTag matched = genParticles
-  double distMin = 0.15
-  vint32 matchPDGId = { 13 } # muons
+  double maxDeltaR = 0.15
+  double maxDPtRel = 1.0
+  bool resolveAmbiguities = false
+  bool resolveByMatchQuality = false
+  bool checkCharge = true
+  vint32 mcPdgId = { 13 } # muons
+  vint32 mcStatus = { 1 }
 }
+
