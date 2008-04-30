@@ -1,5 +1,5 @@
 //
-// $Id: CSA07ProcessId.h,v 1.9 2008/04/04 14:20:55 lowette Exp $
+// $Id: CSA07ProcessId.h,v 1.1 2008/04/11 15:17:40 srappocc Exp $
 //
 
 #ifndef PhysicsTools_HepMCCandAlgos_CSA07ProcessId_h
@@ -46,7 +46,7 @@ namespace csa07 {
       int csa07ProcId_;
     public:
       operator int() const { return csa07ProcId_; }
-      csa07ProcessId(const edm::Event & iEvent) {
+      csa07ProcessId(const edm::Event & iEvent, float lumi = 1000) {
     	// get process Id
     	bool runOnChowder = false; // check if this is a chowder sample
     	edm::Handle<int> procIdH;
@@ -73,7 +73,7 @@ namespace csa07 {
     	// get csa07 weight
     	edm::Handle<double> weightH;
         iEvent.getByLabel("csa07EventWeightProducer", "weight", weightH);
-    	double weight = *weightH;
+    	double weight = *weightH * 1000/lumi;
     	// get the csa07 process id
     	int csa07ProcId;
         // chowder processes
