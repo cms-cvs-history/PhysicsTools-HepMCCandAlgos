@@ -1,5 +1,5 @@
 //
-// $Id: CSA07ProcessIdFilter.cc,v 1.2 2008/02/18 13:47:05 lowette Exp $
+// $Id: CSA07ProcessIdFilter.cc,v 1.1 2008/04/11 15:17:40 srappocc Exp $
 //
 
 #include "FWCore/Framework/interface/MakerMacros.h"
@@ -28,12 +28,14 @@ class CSA07ProcessIdFilter : public edm::EDFilter {
   private:
 
     std::vector<int> csa07Ids_;
+    double overallLumi_;
 
 };
 
 
 CSA07ProcessIdFilter::CSA07ProcessIdFilter(const edm::ParameterSet & iConfig) :
-  csa07Ids_(iConfig.getParameter<std::vector<int> >("csa07Ids")) {
+  csa07Ids_(iConfig.getParameter<std::vector<int> >("csa07Ids")),
+  overallLumi_(iConfig.getParameter<double>("overallLumi")) {
 }
 
 
@@ -43,7 +45,7 @@ CSA07ProcessIdFilter::~CSA07ProcessIdFilter() {
 
 bool CSA07ProcessIdFilter::filter(edm::Event & iEvent, const edm::EventSetup & iSetup) {
   bool accepted = false;
-  int eventId = csa07::csa07ProcessId(iEvent);
+  int eventId = csa07::csa07ProcessId(iEvent, overallLumi_);
   for (std::vector<int>::iterator id = csa07Ids_.begin(); id < csa07Ids_.end(); id++) {
     if (eventId == *id) {
       accepted = true;
