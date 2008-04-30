@@ -1,5 +1,5 @@
 //
-// $Id: CSA07ProcessId.h,v 1.1 2008/04/11 15:17:40 srappocc Exp $
+// $Id: CSA07ProcessId.h,v 1.1.2.1 2008/04/30 14:05:29 lowette Exp $
 //
 
 #ifndef PhysicsTools_HepMCCandAlgos_CSA07ProcessId_h
@@ -16,7 +16,9 @@
        processes correspond to can be found in the code and on the
        CSA07ProcessId twiki page.
      Implemented to be used by the user as a function which looks like:
-       int csa07::csa07ProcessId(const edm::Event & iEvent);
+       int csa07::csa07ProcessId(const edm::Event & iEvent,
+                                 float overallLumi = 1000,
+                                 std::string csa07EventWeightProducerLabel = "csa07EventWeightProducer");
 
   2/ csa07ProcessName
      Description: csa07ProcessName acts like a global function in the csa07
@@ -37,6 +39,7 @@
 #include "FWCore/Framework/interface/Selector.h"
 #include "FWCore/Framework/interface/Event.h"
 #include "DataFormats/Common/interface/Handle.h"
+#include <string>
 
 
 namespace csa07 {
@@ -46,7 +49,7 @@ namespace csa07 {
       int csa07ProcId_;
     public:
       operator int() const { return csa07ProcId_; }
-      csa07ProcessId(const edm::Event & iEvent, float lumi = 1000) {
+      csa07ProcessId(const edm::Event & iEvent, float overallLumi = 1000, std::string csa07EventWeightProducerLabel = "csa07EventWeightProducer") {
     	// get process Id
     	bool runOnChowder = false; // check if this is a chowder sample
     	edm::Handle<int> procIdH;
@@ -54,7 +57,7 @@ namespace csa07 {
     	int procId = *procIdH;
     	if (procId == 4) { // it's chowder!
     	  runOnChowder = true;
-    	  iEvent.getByLabel("csa07EventWeightProducer", "AlpgenProcessID", procIdH);
+    	  iEvent.getByLabel(csa07EventWeightProducerLabel, "AlpgenProcessID", procIdH);
     	  procId = *procIdH;
     	}
     	// get generator event scale
@@ -66,14 +69,14 @@ namespace csa07 {
     	if (runOnChowder) {
     	  filterEff = -1; // not available for alpgen samples
     	} else {
-    	  edm::Handle<double> filterEffH;
-    	  iEvent.getByLabel("genEventRunInfo", "FilterEfficiency", filterEffH);
+          edm::Handle<double> filterEffH;
+          iEvent.getByLabel("genEventRunInfo", "FilterEfficiency", filterEffH);
     	  filterEff = *filterEffH;
     	}
     	// get csa07 weight
     	edm::Handle<double> weightH;
-        iEvent.getByLabel("csa07EventWeightProducer", "weight", weightH);
-    	double weight = *weightH * 1000/lumi;
+        iEvent.getByLabel(csa07EventWeightProducerLabel, "weight", weightH);
+    	double weight = *weightH * 1000/overallLumi;
     	// get the csa07 process id
     	int csa07ProcId;
         // chowder processes
