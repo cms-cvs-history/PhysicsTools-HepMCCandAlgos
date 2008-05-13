@@ -1,5 +1,8 @@
 service = RandomNumberGeneratorService {
-  untracked uint32 sourceSeed = 123456789
+  PSet theSource = {
+	untracked uint32 initialSeed = 123456789
+	untracked engineName = "HepJamesRandom"
+  }
 }  
 
 source = PythiaSource {
