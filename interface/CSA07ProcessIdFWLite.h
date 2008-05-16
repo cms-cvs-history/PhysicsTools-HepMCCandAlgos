@@ -1,5 +1,5 @@
 //
-// $Id: CSA07ProcessIdFWLite.h,v 1.1.2.1 2008/04/30 14:05:29 lowette Exp $
+// $Id: CSA07ProcessIdFWLite.h,v 1.1.2.2 2008/04/30 20:12:45 lowette Exp $
 //
 
 #ifndef PhysicsTools_HepMCCandAlgos_CSA07ProcessIdFWLite_h
@@ -57,7 +57,7 @@ namespace csa07 {
     	int procId = *procIdH;
     	if (procId == 4) { // it's chowder!
     	  runOnChowder = true;
-          procIdH.getByLabel(iEvent, csa07EventWeightProducerLabel, "AlpgenProcessID");
+          procIdH.getByLabel(iEvent, csa07EventWeightProducerLabel.c_str(), "AlpgenProcessID");
     	  procId = *procIdH;
     	}
     	// get generator event scale
@@ -75,7 +75,7 @@ namespace csa07 {
     	}
     	// get csa07 weight
     	fwlite::Handle<double> weightH;
-        weightH.getByLabel(iEvent, csa07EventWeightProducerLabel, "weight");
+        weightH.getByLabel(iEvent, csa07EventWeightProducerLabel.c_str(), "weight");
     	double weight = *weightH * 1000/overallLumi;
     	// get the csa07 process id
     	int csa07ProcId;
