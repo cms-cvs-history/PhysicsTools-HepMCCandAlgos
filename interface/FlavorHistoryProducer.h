@@ -18,7 +18,7 @@
 #include "DataFormats/HepMCCandidate/interface/GenParticle.h"
 #include "DataFormats/Common/interface/Ptr.h"
 #include "DataFormats/Candidate/interface/CandidateFwd.h"
-#include "DataFormats/Candidate/interface/ShallowClonePtrCandidate.h"
+/* #include "DataFormats/Candidate/interface/ShallowClonePtrCandidate.h" */
 #include "DataFormats/HepMCCandidate/interface/FlavorHistory.h"
 #include "DataFormats/Common/interface/Handle.h"
 #include "FWCore/Framework/interface/ESHandle.h"

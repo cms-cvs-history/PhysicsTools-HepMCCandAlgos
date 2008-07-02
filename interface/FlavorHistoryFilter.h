@@ -17,7 +17,7 @@
 //
 // Original Author:  "Salvatore Rappoccio"
 //         Created:  Sat Jun 28 00:41:21 CDT 2008
-// $Id$
+// $Id: FlavorHistoryFilter.h,v 1.1 2008/07/02 03:52:04 srappocc Exp $
 //
 //
 
@@ -36,7 +36,8 @@
 
 
 #include "DataFormats/HepMCCandidate/interface/FlavorHistory.h"
-#include "DataFormats/JetReco/interface/GenJetCollection.h"
+#include "DataFormats/JetReco/interface/GenJetfwd.h"
+#include "DataFormats/JetReco/interface/GenJet.h"
 
 //
 // class declaration
