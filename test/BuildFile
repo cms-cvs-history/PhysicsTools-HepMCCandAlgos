@@ -1,9 +1,3 @@
-<library file="MCTruthMatchFlagProducer.cc">
-  <use name=PhysicsTools/HepMCCandAlgos>
-  <use name=FWCore/Framework>
-  <flags EDM_PLUGIN=1>
-</library>
-
 <library file="DummyHepMCAnalyzer.cc">
   <use name=PhysicsTools/HepMCCandAlgos>
   <use name=SimDataFormats/HepMCProduct>
