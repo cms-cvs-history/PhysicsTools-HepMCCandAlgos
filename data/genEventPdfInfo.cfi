@@ -1,3 +1,0 @@
-module genEventPdfInfo = GenEventPdfInfoProducer {
-  InputTag src = source	
-}
