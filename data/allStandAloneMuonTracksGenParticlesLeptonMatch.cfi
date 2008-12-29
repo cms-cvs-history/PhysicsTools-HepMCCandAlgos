@@ -1,8 +1,0 @@
-module allStandAloneMuonTracksGenParticlesLeptonMatch = MCTruthDeltaRMatcher {
-  InputTag src = allStandAloneMuonTracks
-  InputTag matched = genParticleCandidates
-# note the unusually large value due to 
-# poor resolution
-  double distMin = 0.50
-  vint32 matchPDGId = { 13 }
-}

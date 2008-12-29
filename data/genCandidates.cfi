@@ -1,6 +1,0 @@
-module genCandidates = HepMCCandidateProducer {
-  string src = "VtxSmeared"
-  bool stableOnly = true
-  vstring excludeList = { "nu_e", "nu_mu", "nu_tau", "gamma", "pi0", "K_L0", "n0" }
-  untracked bool verbose = false
-}
