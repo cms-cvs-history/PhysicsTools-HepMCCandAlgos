@@ -1,6 +1,6 @@
 <library file="DummyHepMCAnalyzer.cc">
   <use name=PhysicsTools/HepMCCandAlgos>
-  <use name=SimDataFormats/HepMCProduct>
+  <use name=SimDataFormats/GeneratorProducts>
   <use name=FWCore/Framework>
   <flags EDM_PLUGIN=1>
 </library>
@@ -11,7 +11,7 @@
   <use name=clhep>
   <use name=FWCore/Framework>
   <use name=DataFormats/Common>
-  <use name=SimDataFormats/HepMCProduct>  
+  <use name=SimDataFormats/GeneratorProducts>  
   <use name=PhysicsTools/HepMCCandAlgos>
   <flags EDM_PLUGIN=1>
 </library>
