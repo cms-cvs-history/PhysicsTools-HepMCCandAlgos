@@ -74,7 +74,8 @@ wc = cms.Path(
     cFlavorHistoryProducer*
     ~wbbMEFlavorHistoryFilter*
     ~wbFEFlavorHistoryFilter*
-    ~wccMEFlavorHistoryFilter
+    ~wccMEFlavorHistoryFilter*
+    wcFEFlavorHistoryFilter
     )
 
 # 5) W+bb with 1 jet from the parton shower (dr == 0.0)
