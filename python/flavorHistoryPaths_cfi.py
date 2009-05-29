@@ -40,28 +40,26 @@ from RecoJets.JetProducers.sisCone5GenJets_cff import *
 
 #wjetsAna.verbose = cms.bool(True)
 
+flavorHistorySeq = cms.Sequence(genJetParticles*sisCone5GenJets*
+                                bFlavorHistoryProducer*
+                                cFlavorHistoryProducer )
+
 # 1) W+bb with >= 2 jets from the ME (dr > 0.5)
 wbb = cms.Path(  
-    genJetParticles*sisCone5GenJets*
-    bFlavorHistoryProducer*
-    cFlavorHistoryProducer*
+    flavorHistorySeq*
     wbbMEFlavorHistoryFilter
     )
 
 # 2) W+b or W+bb with 1 jet from the ME
 wb = cms.Path(
-    genJetParticles*sisCone5GenJets*
-    bFlavorHistoryProducer*
-    cFlavorHistoryProducer*
+    flavorHistorySeq*
     ~wbbMEFlavorHistoryFilter*
     wbFEFlavorHistoryFilter
     )
 
 # 3) W+cc from the ME (dr > 0.5)
 wcc = cms.Path( 
-    genJetParticles*sisCone5GenJets*
-    bFlavorHistoryProducer*
-    cFlavorHistoryProducer*
+    flavorHistorySeq*
     ~wbbMEFlavorHistoryFilter*
     ~wbFEFlavorHistoryFilter*
     wccMEFlavorHistoryFilter
@@ -69,9 +67,7 @@ wcc = cms.Path(
 
 # 4) W+c or W+cc with 1 jet from the ME
 wc = cms.Path(
-    genJetParticles*sisCone5GenJets*
-    bFlavorHistoryProducer*
-    cFlavorHistoryProducer*
+    flavorHistorySeq*
     ~wbbMEFlavorHistoryFilter*
     ~wbFEFlavorHistoryFilter*
     ~wccMEFlavorHistoryFilter*
@@ -80,10 +76,7 @@ wc = cms.Path(
 
 # 5) W+bb with 1 jet from the parton shower (dr == 0.0)
 wbb_gs = cms.Path(
-    genJetParticles*sisCone5GenJets*
-    bFlavorHistoryProducer*
-    cFlavorHistoryProducer*
-    cFlavorHistoryProducer*
+    flavorHistorySeq*
     ~wbbMEFlavorHistoryFilter*
     ~wbFEFlavorHistoryFilter*
     ~wccMEFlavorHistoryFilter*
@@ -93,9 +86,7 @@ wbb_gs = cms.Path(
 
 # 6) W+cc with 1 jet from the parton shower (dr == 0.0)
 wcc_gs = cms.Path(
-    genJetParticles*sisCone5GenJets*
-    bFlavorHistoryProducer*
-    cFlavorHistoryProducer*
+    flavorHistorySeq*
     ~wbbMEFlavorHistoryFilter*
     ~wbFEFlavorHistoryFilter*
     ~wccMEFlavorHistoryFilter*
@@ -109,9 +100,7 @@ wcc_gs = cms.Path(
 #
 # 7) W+bb with >= 2 partons but 1 jet from the ME (dr == 0.0)
 wbb_comp = cms.Path( 
-    genJetParticles*sisCone5GenJets*
-    bFlavorHistoryProducer*
-    cFlavorHistoryProducer*
+    flavorHistorySeq*
     ~wbbMEFlavorHistoryFilter*
     ~wbFEFlavorHistoryFilter*
     ~wccMEFlavorHistoryFilter*
@@ -124,9 +113,7 @@ wbb_comp = cms.Path(
 
 # 8) W+cc with >= 2 partons but 1 jet from the ME (dr == 0.0)
 wcc_comp = cms.Path( 
-    genJetParticles*sisCone5GenJets*
-    bFlavorHistoryProducer*
-    cFlavorHistoryProducer*
+    flavorHistorySeq*
     ~wbbMEFlavorHistoryFilter*
     ~wbFEFlavorHistoryFilter*
     ~wccMEFlavorHistoryFilter*
@@ -139,9 +126,7 @@ wcc_comp = cms.Path(
 
 # 9) W+bb with >= 2 partons but 2 jets from the PS (dr > 0.5)
 wbb_gs_comp = cms.Path(
-    genJetParticles*sisCone5GenJets*
-    bFlavorHistoryProducer*
-    cFlavorHistoryProducer*
+    flavorHistorySeq*
     ~wbbMEFlavorHistoryFilter*
     ~wbFEFlavorHistoryFilter*
     ~wccMEFlavorHistoryFilter*
@@ -155,9 +140,7 @@ wbb_gs_comp = cms.Path(
 
 # 10)W+cc with >= 2 partons but 2 jets from the PS (dr > 0.5)
 wcc_gs_comp = cms.Path(
-    genJetParticles*sisCone5GenJets*
-    bFlavorHistoryProducer*
-    cFlavorHistoryProducer*
+    flavorHistorySeq*
     ~wbbMEFlavorHistoryFilter*
     ~wbFEFlavorHistoryFilter*
     ~wccMEFlavorHistoryFilter*
@@ -176,9 +159,7 @@ wcc_gs_comp = cms.Path(
 # 11) Veto of all the previous (W+ light jets)
 
 wjets = cms.Path(
-    genJetParticles*sisCone5GenJets*
-    bFlavorHistoryProducer*
-    cFlavorHistoryProducer*
+    flavorHistorySeq*
     ~wbbMEFlavorHistoryFilter*
     ~wbFEFlavorHistoryFilter*
     ~wccMEFlavorHistoryFilter*

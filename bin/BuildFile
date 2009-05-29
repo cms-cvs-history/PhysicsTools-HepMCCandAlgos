@@ -1,0 +1,13 @@
+<environment>
+<bin name=flavorHistory_fwlite file=flavorhistory_fwlite.cc>
+ <use name=root>
+ <use name=rootcintex>
+ <use name=boost>
+ <use name=FWCore/FWLite>
+ <use name=FWCore/Framework>
+ <use name=DataFormats/FWLite>
+ <use name=DataFormats/HepMCCandidate>
+ <use name=PhysicsTools/HepMCCandAlgos>
+</bin>
+
+</environment>
