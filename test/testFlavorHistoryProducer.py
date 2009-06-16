@@ -42,8 +42,7 @@ process.load( "RecoJets.JetProducers.sisCone5GenJets_cff")
 
 
 # input flavor history stuff
-process.load("PhysicsTools.HepMCCandAlgos.flavorHistoryProducer_cfi")
-process.load("PhysicsTools.HepMCCandAlgos.flavorHistoryFilter_cfi")
+process.load("PhysicsTools.HepMCCandAlgos.flavorHistoryPaths_cfi")
 
 process.printList = cms.EDAnalyzer( "ParticleListDrawer",
                                     src =  cms.InputTag( "genParticles" ),
@@ -79,16 +78,6 @@ process.eventSel = cms.PSet(
 )
 
 
-# define path 'p'. This will produce all of the objects.
-# This is the path that will be used to write the output to
-# a data file. 
-#process.p = cms.Path(
-#    process.genJetParticles*process.sisCone5GenJets*
-#    process.bFlavorHistoryProducer*
-#    process.cFlavorHistoryProducer
-#)
-
-
 
 # load the different paths to make the different HF selections
 
@@ -116,8 +105,9 @@ process.out = cms.OutputModule( "PoolOutputModule",
     "keep *_genEventWeight_*_*",
     "keep *_bFlavorHistoryProducer_*_*",
     "keep *_cFlavorHistoryProducer_*_*",
+    "keep *_flavorHistoryFilter_*_*"
     )
-                            )
+                                )
 
 
 # define output path
