@@ -5,7 +5,7 @@
  * Convert HepMC GenEvent format into a collection of type
  * CandidateCollection containing objects of type GenParticle
  *
- * \version $Id: GenParticleProducer.cc,v 1.7 2008/04/17 14:56:56 llista Exp $
+ * \version $Id: GenParticleProducer.cc,v 1.8 2008/12/29 10:12:31 hegner Exp $
  *
  */
 #include "FWCore/Framework/interface/EDProducer.h"
@@ -81,13 +81,13 @@ int GenParticleProducer::chargeTimesThree( int id ) const {
   if( abs( id ) < PDGCacheMax ) 
     return id > 0 ? chargeP_[ id ] : chargeM_[ - id ];
   map<int, int>::const_iterator f = chargeMap_.find( id );
-  if ( f == chargeMap_.end() ) 
+  if ( f == chargeMap_.end() ) {
     if ( abortOnUnknownPDGCode_ )
       throw edm::Exception( edm::errors::LogicError ) 
 	<< "invalid PDG id: " << id << endl;
-    else {
+    else
       return HepPDT::ParticleID(id).threeCharge();
-    }
+  }
   return f->second;
 }
 
