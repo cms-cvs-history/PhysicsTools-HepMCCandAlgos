@@ -5,7 +5,7 @@
   <flags EDM_PLUGIN=1>
 </library>
 
-<library file=HZZ4muAnalyzer.cc name=HZZ4muAnalyzer>
+<library file=HZZ4muAnalyzer.cc name=HZZ4muTestAnalyzer>
   <use name=boost>
   <use name=root>
   <use name=clhep>
